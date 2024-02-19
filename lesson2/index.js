@@ -2,7 +2,7 @@
 console.log('Базовое задание')
 
 let getLength = (value) => {
-  if (value.length) {
+  if (value && value.length) {
     console.log(value.length);
   } else {
     console.log(0);
@@ -13,6 +13,7 @@ getLength('Hello');
 getLength(10);
 getLength({});
 getLength([1, 2, 3, 4]);
+getLength(undefined);
 
 
 // Продинутое задание с использованием рекурсии
