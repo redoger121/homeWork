@@ -2,18 +2,32 @@
 console.log('Базовое задание')
 
 let getLength = (value) => {
-  if (value && value.length) {
+  if (value && value.length  ) {
     console.log(value.length);
-  } else {
+  } 
+  
+  else if(value && value.size){
+    console.log(value.size);
+  }
+  else {
     console.log(0);
   }
 };
 
+
+const map1 = new Map([
+  ['name', 'Ivan'],
+  ['surname', 'Kovrigin'],
+  ['date', '19.02.2024'],
+]);
+const fruitSet = new Set(['🍉', '🍎', '🍈', '🍏']);
 getLength('Hello');
 getLength(10);
 getLength({});
 getLength([1, 2, 3, 4]);
 getLength(undefined);
+getLength(map1);
+getLength(fruitSet);
 
 
 // Продинутое задание с использованием рекурсии
