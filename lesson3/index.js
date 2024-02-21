@@ -84,14 +84,14 @@ for (let [key, value] of originalCounter1) {
 }
 console.log(copiedCounter5);
 //используя метод Object.assign()
-let copiedCounter6 = Object.assign({}, originalCounter2);
+const copiedCounter6 = Object.assign({}, originalCounter2);
 console.log(copiedCounter6);
 //используя конструктор объекта:
-let copiedCounter7 = new Object(originalCounter2);
+const copiedCounter7 = new Object(originalCounter2);
 console.log(copiedCounter7);
 //используя Object.create() не полная копия так как изменения могут отразиться на
 //исходном объекте через прототипное наследование
-let copiedCounter8 = Object.create(originalCounter2);
+const copiedCounter8 = Object.create(originalCounter2);
 
 //Задание 3
 //Объявляемая функция
@@ -104,7 +104,7 @@ function makeCounter1() {
   };
 }
 
-const counter9 = makeCounter1();
+let counter9 = makeCounter1();
 console.log('Объявляемая функция')
 console.log(counter9());
 console.log(counter9());
