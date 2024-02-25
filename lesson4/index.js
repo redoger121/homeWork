@@ -11,22 +11,40 @@ const obj = {
   item: 'some value',
 };
 
-function logger(){
-    console.log(`I output only external context: ${this.item}`)
-   
+function logger() {
+  console.log(`I output only external context: ${this.item}`);
 }
 
-logger.apply(obj)
-logger.bind(obj)()
-logger.call(obj)
+logger.apply(obj);
+logger.bind(obj)();
+logger.call(obj);
+
+Function.prototype.customBind = function (context) {
+  if (typeof this !== 'function') {
+    throw new Error('no function in context');
+  }
+  const targetFn = this;
+  const args = Array.from(arguments).slice(1);
+  return function () {
+    return targetFn.apply(context, args);
+  };
+};
 
 
-Function.prototype.customBind=function(context){
-    const targetFn=this;
-    const args=Array.from(arguments).slice(1)
-    return function(){
-        return targetFn.apply(context, args)
-    }
-}
+Function.prototype.customBind2 = function(context) {
+    if (typeof this !== 'function') {
+        throw new Error('no function in context');
+      }
+    let object = {...context};
+    object.func = this;
+    return function() {
+      return object.func(arguments);
+    };
+  };
+console.log('_________________________________________________________________')
+console.log('используя apply')
+logger.customBind(obj)();
+console.log('без  apply и call')
+logger.customBind2(obj)();
 
-logger.customBind(obj)()
+
