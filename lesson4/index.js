@@ -35,12 +35,14 @@ Function.prototype.customBind2 = function(context) {
     if (typeof this !== 'function') {
         throw new Error('no function in context');
       }
-    let object = {...context};
-    object.func = this;
+    const object = {...context};
+    const args = Array.from(arguments).slice(1);
+    object.targetFn = this;
     return function() {
-      return object.func(arguments);
+      return object.targetFn(...args);
     };
   };
+  
 console.log('_________________________________________________________________')
 console.log('используя apply')
 logger.customBind(obj)();
